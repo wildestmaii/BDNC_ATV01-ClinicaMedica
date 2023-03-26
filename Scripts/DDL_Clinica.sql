@@ -104,6 +104,33 @@ CREATE TABLE IF NOT EXISTS `Clinica`.`Consultas` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Alterações na criação
+-- -----------------------------------------------------
+ALTER TABLE `Clinica`.`Funcionarios`
+ADD COLUMN `nroa` INT;
+
+CREATE INDEX `Medicos_CPF`
+ON `Clinica`.`Medicos` (CPF);
+
+CREATE INDEX `Pacientes_Doenca`
+ON `Clinica`.`Pacientes`(Doenca);
+
+DROP INDEX `Pacientes_Doenca`
+ON `Clinica`.`Pacientes`;
+
+ALTER TABLE `Clinica`.`Funcionarios`
+DROP COLUMN `cargo`;
+
+ALTER TABLE `Clinica`.`Funcionarios`
+DROP COLUMN `nroa`;
+
+-- -----------------------------------------------------
+-- Alterações futuras
+-- -----------------------------------------------------
+
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
