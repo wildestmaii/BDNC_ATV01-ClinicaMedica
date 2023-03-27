@@ -116,8 +116,8 @@ ON `Clinica`.`Medicos` (CPF);
 CREATE INDEX `Pacientes_Doenca`
 ON `Clinica`.`Pacientes`(Doenca);
 
-DROP INDEX `Pacientes_Doenca`
-ON `Clinica`.`Pacientes`;
+ALTER TABLE `Pacientes`
+DROP INDEX `Pacientes_Doenca`;
 
 ALTER TABLE `Clinica`.`Funcionarios`
 DROP COLUMN `cargo`;
