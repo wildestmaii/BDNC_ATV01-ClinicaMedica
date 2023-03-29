@@ -29,7 +29,7 @@ estrangeiras:
 
 ### Popular tabelas:
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4c717f31-a26d-4f7b-a93a-41070ba007d5/Untitled.png)
+![Untitled](Atividade%2001%20-%20Cli%CC%81nica%20Me%CC%81dica%2029d7a1b05b2e475fb78b1107e0152e5f/Untitled.png)
 
 ### Realizar as seguintes atualizações no BD:
 
