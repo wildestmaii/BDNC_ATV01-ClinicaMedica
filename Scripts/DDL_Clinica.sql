@@ -69,7 +69,7 @@ ENGINE = InnoDB;
 -- Table `Clinica`.`Funcionarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Clinica`.`Funcionarios` (
-  `codf` INT NULL,
+  `codf` INT NOT NULL,
   `nome` VARCHAR(40) NOT NULL,
   `idade` SMALLINT(255) NULL,
   `CPF` DECIMAL(11) NULL,
@@ -85,7 +85,7 @@ ENGINE = InnoDB;
 -- Table `Clinica`.`Consultas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Clinica`.`Consultas` (
-  `data` DATE NULL,
+  `data` DATE NOT NULL,
   `hora` TIME NULL,
   `Medicos_codm` INT NOT NULL,
   `Pacientes_codp` INT NOT NULL,
