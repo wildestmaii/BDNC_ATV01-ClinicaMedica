@@ -1,5 +1,5 @@
 -- -----------------------------------------------------
--- Inserindo dados na tabela Endereços
+-- Populando as tabelas da Clinica
 -- -----------------------------------------------------
 
 INSERT INTO `Clinica`.`Ambulatorios` (`nroa`, `andar`, `capacidade`)
