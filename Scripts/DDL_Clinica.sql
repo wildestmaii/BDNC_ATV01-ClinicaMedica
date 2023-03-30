@@ -134,6 +134,8 @@ DROP COLUMN `nroa`;
 -- Alterações futuras
 -- -----------------------------------------------------
 
+-- Por conta da ACL nas tabelas, que impedia o update
+SET SQL_SAFE_UPDATES = 0;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
