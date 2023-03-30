@@ -11,16 +11,19 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema Clinica
 -- -----------------------------------------------------
+-- 1. Crie um BD com o nome Clinica
 CREATE SCHEMA IF NOT EXISTS `Clinica` DEFAULT CHARACTER SET utf8 ;
 USE `Clinica` ;
+
+-- 2. Criação das tabelas no presente banco
 
 -- -----------------------------------------------------
 -- Table `Clinica`.`Ambulatorios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Clinica`.`Ambulatorios` (
-  `nroa` INT NULL,
+  `nroa` INT NOT NULL,
   `andar` DECIMAL(3) NOT NULL,
-  `capacidade` SMALLINT NULL,
+  `capacidade` SMALLINT,
   PRIMARY KEY (`nroa`))
 ENGINE = InnoDB;
 
@@ -29,12 +32,12 @@ ENGINE = InnoDB;
 -- Table `Clinica`.`Medicos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Clinica`.`Medicos` (
-  `codm` INT NULL,
+  `codm` INT NOT NULL,
   `nome` VARCHAR(40) NOT NULL,
   `idade` SMALLINT NOT NULL,
-  `especialidade` CHAR(20) NULL,
-  `CPF` DECIMAL(11) NULL,
-  `cidade` VARCHAR(30) NULL,
+  `especialidade` CHAR(20),
+  `CPF` DECIMAL(11),
+  `cidade` VARCHAR(30),
   `Ambulatorios_nroa` INT NOT NULL,
   PRIMARY KEY (`codm`),
   UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC) VISIBLE,
@@ -51,11 +54,11 @@ ENGINE = InnoDB;
 -- Table `Clinica`.`Pacientes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Clinica`.`Pacientes` (
-  `codp` INT NULL,
+  `codp` INT NOT NULL,
   `nome` VARCHAR(40) NOT NULL,
   `idade` SMALLINT NOT NULL,
-  `cidade` CHAR(30) NULL,
-  `CPF` DECIMAL(11) NULL,
+  `cidade` CHAR(30),
+  `CPF` DECIMAL(11),
   `doenca` VARCHAR(40) NOT NULL,
   PRIMARY KEY (`codp`),
   UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC) VISIBLE)
@@ -66,13 +69,13 @@ ENGINE = InnoDB;
 -- Table `Clinica`.`Funcionarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Clinica`.`Funcionarios` (
-  `codf` INT NULL,
+  `codf` INT NOT NULL,
   `nome` VARCHAR(40) NOT NULL,
-  `idade` SMALLINT NULL,
-  `CPF` DECIMAL(11) NULL,
-  `cidade` VARCHAR(30) NULL,
-  `salario` DECIMAL(10) NULL,
-  `cargo` VARCHAR(20) NULL,
+  `idade` SMALLINT,
+  `CPF` DECIMAL(11),
+  `cidade` VARCHAR(30),
+  `salario` DECIMAL(10),
+  `cargo` VARCHAR(20),
   PRIMARY KEY (`codf`),
   UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -82,10 +85,10 @@ ENGINE = InnoDB;
 -- Table `Clinica`.`Consultas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Clinica`.`Consultas` (
-  `data` DATE NULL,
-  `hora` TIME NULL,
-  `Medicos_codm` INT NULL,
-  `Pacientes_codp` INT NULL,
+  `data` DATE NOT NULL,
+  `hora` TIME NOT NULL,
+  `Medicos_codm` INT NOT NULL,
+  `Pacientes_codp` INT,
   PRIMARY KEY (`Medicos_codm`, `hora`, `data`),
   INDEX `fk_Consultas_Pacientes1_idx` (`Pacientes_codp` ASC) VISIBLE,
   CONSTRAINT `fk_Consultas_Medicos`
@@ -104,18 +107,23 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Alterações na criação
 -- -----------------------------------------------------
+
+-- 3. Crie a coluna nroa (int) na tabela Funcionarios
 ALTER TABLE `Clinica`.`Funcionarios`
 ADD COLUMN `nroa` INT;
 
+-- 4. Crie os índices para: Medicos [CPF (único)] e Pacientes [doenca]
 CREATE INDEX `Medicos_CPF`
 ON `Clinica`.`Medicos` (CPF);
 
 CREATE INDEX `Pacientes_Doenca`
 ON `Clinica`.`Pacientes`(Doenca);
 
+-- 5. Remover o índice doenca em Pacientes
 ALTER TABLE `Pacientes`
 DROP INDEX `Pacientes_Doenca`;
 
+-- 6. Remover as colunas cargo e nroa da tabela de Funcionarios
 ALTER TABLE `Clinica`.`Funcionarios`
 DROP COLUMN `cargo`;
 
