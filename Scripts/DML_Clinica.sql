@@ -88,17 +88,3 @@ WHERE `Pacientes`.`doenca` = 'cancer' OR `Pacientes`.`idade` < 10;
 -- 8. Os médicos que residem em Biguacu e Palhoca deixaram a clínica
 DELETE FROM `Clinica`.`Medicos`
 WHERE `Medicos`.`cidade` = 'Palhoca' OR `Medicos`.`cidade` = 'Palhoca';
-
------ 0 row affected
-DELETE FROM `Clinica`.`Pacientes`
-WHERE `idade` < 10;
-
------ 20:06:01	DELETE FROM `Clinica`.`Medicos` WHERE `cidade` = `Biguacu`	Error Code: 1054. Unknown column 'Biguacu' in 'where clause'	0.016 sec
-DELETE FROM `Clinica`.`Medicos`
-WHERE `cidade` = `Biguacu`;
-
------ 20:06:28	DELETE FROM `Clinica`.`Medicos` WHERE `cidade` = `Palhoca`	Error Code: 1054. Unknown column 'Palhoca' in 'where clause'	0.016 sec
-DELETE FROM `Clinica`.`Medicos`
-WHERE `cidade` = `Palhoca`;
-
-
