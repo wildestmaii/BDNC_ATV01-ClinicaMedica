@@ -47,3 +47,10 @@ canceladas
 deixaram a clínica
 8. Os médicos que residem em Biguacu e Palhoca deixaram
 a clínica
+
+# Colaboradores
+<table>
+  <tr>
+        <td align="center"><a href="https://www.linkedin.com/in/brazadrian"><img src="https://avatars.githubusercontent.com/u/60609409?v=4" width="100px;" alt=""/><br /><sub><b>Gilmar Adrian</b></sub></a></td>
+        <td align="center"><a href="https://www.linkedin.com/in/wildestmaii/"><img src="https://avatars.githubusercontent.com/u/52250674?v=4 width="100px;" alt=""/><br /><sub><b>Maiara Meneses</b></sub></a></td>
+  </tr>
