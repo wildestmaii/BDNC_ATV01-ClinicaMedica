@@ -38,15 +38,9 @@ CREATE TABLE IF NOT EXISTS `Clinica`.`Medicos` (
   `especialidade` CHAR(20),
   `CPF` DECIMAL(11),
   `cidade` VARCHAR(30),
-  `Ambulatorios_nroa` INT NOT NULL,
+  `Ambulatorios_nroa` INT,
   PRIMARY KEY (`codm`),
-  UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC) VISIBLE,
-  INDEX `fk_Medicos_Ambulatorios1_idx` (`Ambulatorios_nroa` ASC) VISIBLE,
-  CONSTRAINT `fk_Medicos_Ambulatorios1`
-    FOREIGN KEY (`Ambulatorios_nroa`)
-    REFERENCES `Clinica`.`Ambulatorios` (`nroa`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -99,8 +93,8 @@ CREATE TABLE IF NOT EXISTS `Clinica`.`Consultas` (
   CONSTRAINT `fk_Consultas_Pacientes1`
     FOREIGN KEY (`Pacientes_codp`)
     REFERENCES `Clinica`.`Pacientes` (`codp`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
