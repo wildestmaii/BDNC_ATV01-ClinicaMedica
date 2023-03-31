@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `Clinica`.`Medicos` (
   `especialidade` CHAR(20),
   `CPF` DECIMAL(11),
   `cidade` VARCHAR(30),
-  `Ambulatorios_nroa` INT NOT NULL,
+  `Ambulatorios_nroa` INT,
   PRIMARY KEY (`codm`),
   UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC) VISIBLE,
   INDEX `fk_Medicos_Ambulatorios1_idx` (`Ambulatorios_nroa` ASC) VISIBLE,
